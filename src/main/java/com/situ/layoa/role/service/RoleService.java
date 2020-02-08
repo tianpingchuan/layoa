@@ -6,6 +6,8 @@
  */ 
 package com.situ.layoa.role.service;
 
+import java.util.List;
+
 import com.situ.layoa.role.domain.Role;
 
 /** 
@@ -17,4 +19,16 @@ public interface RoleService {
 	Long roleSave(Role role);
 	
 	Role findByName(String roleName);
+	
+	List<Role> findAllRole();
+	
+	Integer getCount();
+	
+	Integer doDelete(Long rowId);
+	
+	Integer doUpdate(Role role);
+	
+	Role getByID(Long rowId);
+
+	List<Role> findRoleByPage(Integer page, Integer limit);
 }

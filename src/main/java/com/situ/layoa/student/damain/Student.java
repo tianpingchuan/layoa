@@ -27,6 +27,15 @@ public class Student implements Serializable {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date stuBirthday;// 学生生日
 	private List<String> stuLikes;// 学生爱好
+	private String stuImg;// 学生头像
+
+	public String getStuImg() {
+		return stuImg;
+	}
+
+	public void setStuImg(String stuImg) {
+		this.stuImg = stuImg;
+	}
 
 	public Long getRowId() {
 		return rowId;
@@ -79,7 +88,7 @@ public class Student implements Serializable {
 	@Override
 	public String toString() {
 		return "Student [rowId=" + rowId + ", stuName=" + stuName + ", stuAge=" + stuAge + ", stuSex=" + stuSex
-				+ ", stuBirthday=" + stuBirthday + ", stuLikes=" + stuLikes + "]";
+				+ ", stuBirthday=" + stuBirthday + ", stuLikes=" + stuLikes + ", stuImg=" + stuImg + "]";
 	}
 
 }

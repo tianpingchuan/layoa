@@ -17,4 +17,51 @@
 		<include refid="role_base_select"/> AND ROLE_NAME=#{roleName}
 	</select>
 	
+	<select id="findByPage" resultType="Role">
+		<include refid="role_base_select"/>
+		 LIMIT #{firstResult},#{maxResults}
+	</select>
+	
+	<select id="findAllRole"  resultType="Role">
+		<include refid="role_base_select"/>
+	</select>
+	
+	<select id="getCount" resultType="java.lang.Integer">
+		SELECT COUNT(ROW_ID) FROM TB_ROLE WHERE ACTIVE_FLAG =1
+	</select>
+	
+	<select id="get" parameterType="Role" resultType="Role">
+		<include refid="role_base_select"/> AND ROW_ID = #{rowId}
+	</select>
+	
+	<update id="delete" parameterType="Role">
+		UPDATE TB_ROLE SET ACTIVE_FLAG=0 WHERE ROW_ID = #{rowId}
+	</update>
+	
+	<update id="update" parameterType="Role">
+		UPDATE TB_ROLE
+		<set>
+			<if test="roleCode!=null">
+				ROLE_CODE = #{roleCode},
+			</if>
+			<if test="roleName!=null">
+				ROLE_NAME = #{roleName},
+			</if>
+			
+			<if test="roleKind!=null">
+				ROLE_KIND = #{roleKind},
+			</if>
+			<if test="roleInfo!=null">
+				ROLE_INFO = #{roleInfo},
+			</if>
+			<if test="updateBy!=null">
+				UPDATE_BY = #{updateBy},
+			</if>
+			<if test="updateDate!=null">
+				UPDATE_DATE = #{updateDate},
+			</if>
+		</set>
+		WHERE ROW_ID = #{rowId}
+	</update>
+	
 </mapper>

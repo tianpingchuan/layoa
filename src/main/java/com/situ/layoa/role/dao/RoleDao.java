@@ -6,6 +6,9 @@
  */ 
 package com.situ.layoa.role.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.situ.layoa.role.domain.Role;
@@ -20,4 +23,16 @@ public interface RoleDao {
 	Long save(Role role);
 	
 	Role findByName(String roleName);
+	
+	List<Role> findAllRole();
+	
+	List<Role> findByPage(@Param("firstResult") Integer firstResult,@Param("maxResults") Integer maxResults);
+	
+	Integer getCount();
+	
+	void delete(Long rowId);
+	
+	void update(Role role);
+	
+	Role get(Long rowId);
 }
